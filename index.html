@@ -21,6 +21,12 @@
         #authContainer {
             margin-top: 20px; /* Adds space between buttons and forms */
         }
+
+        /* Hide the container when forms are not displayed */
+        #loginFormContainer,
+        #signupFormContainer {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +67,9 @@
 
     <!-- JavaScript to toggle between login and sign-up forms -->
     <script>
+        // Show login form by default
+        showLoginForm();
+
         function showLoginForm() {
             document.getElementById("loginFormContainer").style.display = "block";
             document.getElementById("signupFormContainer").style.display = "none";
