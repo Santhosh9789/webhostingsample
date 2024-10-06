@@ -1,31 +1,42 @@
-function generateRandomArray(length, min, max) {
-    const randomArray = [];
-    for (let i = 0; i < length; i++) {
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-      randomArray.push(randomNumber);
-    }
-    return randomArray;
-  }
-  
-  function calculateSum(array) {
-    let sum = 0;
-    for (let num of array) {
-      sum += num;
-    }
-    return sum;
-  }
-  
-  function main() {
-    const arrayLength = 100;
-    const minValue = 1;
-    const maxValue = 1000;
-  
-    const randomNumbers = generateRandomArray(arrayLength, minValue, maxValue);
-    console.log("Randomly Generated Array:", randomNumbers);
-  
-    const sum = calculateSum(randomNumbers);
-    console.log("Sum of the Array:", sum);
-  }
-  
-  main();
-  
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+
+// Initialize Firebase Auth
+const auth = getAuth();
+
+// Sign Up Function
+function signup() {
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed up successfully
+            alert("Sign-up successful!");
+            // Optionally redirect to another page
+            // window.location.href = "your_redirect_page.html";
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            document.getElementById('signupError').textContent = errorMessage;
+        });
+}
+
+// Login Function
+function login() {
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Logged in successfully
+            alert("Login successful!");
+            // Optionally redirect to another page
+            // window.location.href = "your_redirect_page.html";
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            document.getElementById('loginError').textContent = errorMessage;
+        });
+}
