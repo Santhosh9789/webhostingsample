@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authentication Example</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-    <script type="module" src="firebase-setup.js"></script> <!-- Firebase setup file -->
+    
+    <!-- Firebase setup script -->
+    <script type="module" src="firebase-setup.js"></script> <!-- Firebase initialization -->
+
+    <!-- Firebase authentication logic -->
+    <script type="module" src="firebase-auth.js"></script> <!-- Firebase authentication logic -->
 </head>
 <body>
 
+    <!-- Authentication Container -->
     <div id="authContainer">
         <h2>Login</h2>
         <form id="loginForm">
             <input type="email" id="loginEmail" placeholder="Enter Email" required>
             <input type="password" id="loginPassword" placeholder="Enter Password" required>
             <button type="button" onclick="login()">Login</button>
-            <p id="loginError" style="color:red;"></p>
+            <p id="loginError" style="color: red;"></p>
         </form>
 
         <h2>Sign Up</h2>
@@ -23,10 +29,11 @@
             <input type="email" id="signupEmail" placeholder="Enter Email" required>
             <input type="password" id="signupPassword" placeholder="Enter Password" required>
             <button type="button" onclick="signup()">Sign Up</button>
-            <p id="signupError" style="color:red;"></p>
+            <p id="signupError" style="color: red;"></p>
         </form>
     </div>
 
+    <!-- Logout button (initially hidden) -->
     <button id="logoutButton" onclick="logout()" style="display: none;">Logout</button>
 
 </body>
